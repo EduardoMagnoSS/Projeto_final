@@ -6,12 +6,7 @@
     <title>Cadastro de técnico</title>
 </head>
 <body>
-    <ul>
-    {% for tecnico in tecnicos %}
-        <li> {{tecnico.nome}} - {{tecnico.matricula}}</li>
-    {% endfor %}
-    </ul>
-
+    
     <form action="{% url 'salvar' %}" method="POST">
         {% csrf_token %}
         <label for="nome">Nome:</label>
@@ -22,5 +17,12 @@
 
         <button type="submit">Enviar</button>
     </form>
+
+    <ul>
+    {% for tecnico in tecnicos %}
+        <li> {{tecnico.nome}} - {{tecnico.matricula}} <a href="{% url 'editar' tecnico.id %}">editar</a></li>
+    {% endfor %}
+    </ul>
+
 </body>
 </html>
