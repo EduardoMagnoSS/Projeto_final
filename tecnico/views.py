@@ -28,3 +28,8 @@ def update (request, id):
     tecnico_.matricula = matricula
     tecnico_.save()
     return redirect(home)
+
+def deletar (request, id):
+    tecnico_ = tecnico.objects.get(id=id)
+    tecnico_.delete()
+    return redirect(home)

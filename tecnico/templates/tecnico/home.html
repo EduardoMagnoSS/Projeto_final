@@ -20,7 +20,11 @@
 
     <ul>
     {% for tecnico in tecnicos %}
-        <li> {{tecnico.nome}} - {{tecnico.matricula}} <a href="{% url 'editar' tecnico.id %}">editar</a></li>
+        <li>
+             {{tecnico.nome}} - {{tecnico.matricula}} 
+             <a href="{% url 'editar' tecnico.id %}">editar</a>
+             <a href="{% url 'deletar' tecnico.id %}">deletar</a>
+            </li>
     {% endfor %}
     </ul>
 
