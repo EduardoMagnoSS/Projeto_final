@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipamentos</title>
+</head>
+<body>
+    <form action="{% url 'salvar_equip' %}" method="POST">
+        {% csrf_token %}
+        <label for="nome">Tombo:</label>
+        <input type="text" name="tombo">
+
+        <label for="matricula">Tipo:</label>
+        <input type="text" name="tipo">
+
+        <label for="matricula">Descrição:</label>
+        <input type="text" name="descricao">
+
+        <label for="matricula">Setor:</label>
+        <input type="text" name="setor">
+
+        <label for="matricula">Usuario:</label>
+        <input type="text" name="usuario">
+
+        <label for="matricula">ID do AnyDesk:</label>
+        <input type="text" name="id_remoto">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <ul>
+    {% for equipamento in equipamentos %}
+        <li>
+             {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}} 
+             <a href="#">editar</a>
+             <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
+            </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
