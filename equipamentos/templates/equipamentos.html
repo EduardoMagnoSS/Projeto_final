@@ -11,19 +11,19 @@
         <label for="nome">Tombo:</label>
         <input type="text" name="tombo">
 
-        <label for="matricula">Tipo:</label>
+        <label for="tipo">Tipo:</label>
         <input type="text" name="tipo">
 
-        <label for="matricula">Descrição:</label>
+        <label for="descricao">Descrição:</label>
         <input type="text" name="descricao">
 
-        <label for="matricula">Setor:</label>
+        <label for="setor">Setor:</label>
         <input type="text" name="setor">
 
-        <label for="matricula">Usuario:</label>
+        <label for="usuario">Usuario:</label>
         <input type="text" name="usuario">
 
-        <label for="matricula">ID do AnyDesk:</label>
+        <label for="id_remoto">ID do AnyDesk:</label>
         <input type="text" name="id_remoto">
 
         <button type="submit">Enviar</button>
@@ -33,7 +33,7 @@
     {% for equipamento in equipamentos %}
         <li>
              {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}} 
-             <a href="#">editar</a>
+             <a href="{% url 'update_equip' equipamento.id %}">editar</a>
              <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
             </li>
     {% endfor %}
