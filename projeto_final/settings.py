@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'equipamentos',
     'tecnico',
-    'atendimento'
+    'atendimento',
+    'home'
 ]
 
 MIDDLEWARE = [

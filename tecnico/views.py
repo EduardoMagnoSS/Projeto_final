@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from .models import tecnico
 
 # Create your views here.
-def home(request):
+def tecnico__(request):
     tecnicos = tecnico.objects.all()
     
-    return render(request, "tecnico/home.html",{"tecnicos": tecnicos})
+    return render(request, "tecnico/tecnico.html",{"tecnicos": tecnicos})
 
 def salvar(request):
     nome = request.POST.get("nome")
@@ -13,7 +13,7 @@ def salvar(request):
     tecnico.objects.create(nome = nome, matricula = matricula)
     tecnicos = tecnico.objects.all()
     
-    return render (request,"tecnico/home.html",{"tecnicos": tecnicos})
+    return render (request,"tecnico/tecnico.html",{"tecnicos": tecnicos})
 
 def editar(request, id):
     tecnico_ = tecnico.objects.get(id=id)
@@ -27,9 +27,9 @@ def update (request, id):
     tecnico_.nome = nome
     tecnico_.matricula = matricula
     tecnico_.save()
-    return redirect(home)
+    return redirect(tecnico__)
 
 def deletar (request, id):
     tecnico_ = tecnico.objects.get(id=id)
     tecnico_.delete()
-    return redirect(home)
+    return redirect(tecnico__)
