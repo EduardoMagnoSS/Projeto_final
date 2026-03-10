@@ -1,58 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends "base.html" %}
+{% block title %}Equipamentos{% endblock %}
+{% block content %}
+<header>
+  <h1>Equipamentos</h1>
+</header>
+<section>
+  <header>
+    <h2>Cadastro de equipamentos</h2>
+  </header>
+  <form action="{% url 'salvar_equip' %}" method="POST">
+    {% csrf_token %}
+    <label for="tombo">Tombo:</label>
+    <input type="number" name="tombo">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipamentos</title>
-</head>
+    <label for="tipo">Tipo:</label>
+    <input type="text" name="tipo">
 
-<body>
-  <main>
-    <header>
-      <h1>Equipamentos</h1>
-    </header>
-    <section>
-      <header>
-        <h2>Cadastro de equipamentos</h2>
-      </header>
-      <form action="{% url 'salvar_equip' %}" method="POST">
-        {% csrf_token %}
-        <label for="tombo">Tombo:</label>
-        <input type="number" name="tombo">
+    <label for="descricao">Descrição:</label>
+    <input type="text" name="descricao">
 
-        <label for="tipo">Tipo:</label>
-        <input type="text" name="tipo">
+    <label for="setor">Setor:</label>
+    <input type="text" name="setor">
 
-        <label for="descricao">Descrição:</label>
-        <input type="text" name="descricao">
+    <label for="usuario">Usuario:</label>
+    <input type="text" name="usuario">
 
-        <label for="setor">Setor:</label>
-        <input type="text" name="setor">
+    <label for="id_remoto">ID do AnyDesk:</label>
+    <input type="number" name="id_remoto">
 
-        <label for="usuario">Usuario:</label>
-        <input type="text" name="usuario">
+    <button type="submit">Enviar</button>
+  </form>
+</section>
 
-        <label for="id_remoto">ID do AnyDesk:</label>
-        <input type="number" name="id_remoto">
-
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Equipamentos registrados</h2>
-      <ul>
-        {% for equipamento in equipamentos %}
-        <li>
-          {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}}
-          <a href="{% url 'editar_equip' equipamento.id %}">editar</a>
-          <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </section>
-  </main>
-</body>
-
-</html>
+<section>
+  <h2>Equipamentos registrados</h2>
+  <ul>
+    {% for equipamento in equipamentos %}
+    <li>
+      {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}}
+      <a href="{% url 'editar_equip' equipamento.id %}">editar</a>
+      <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

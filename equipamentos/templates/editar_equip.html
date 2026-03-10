@@ -8,27 +8,29 @@
 </head>
 
 <body>
-  <form action="{% url 'update_equip' equipamento.id%}" method="POST">
-    {% csrf_token %}
-    <label for="tombo">Tombo:</label>
-    <input type="number" name="tombo" value="{{equipamento.tombo}}">
+  <main>
+    <form action="{% url 'update_equip' equipamento.id%}" method="POST">
+      {% csrf_token %}
+      <label for="tombo">Tombo:</label>
+      <input type="number" name="tombo" value="{{equipamento.tombo}}">
 
-    <label for="tipo">Tipo:</label>
-    <input type="text" name="tipo" value="{{equipamento.tipo}}">
+      <label for="tipo">Tipo:</label>
+      <input type="text" name="tipo" value="{{equipamento.tipo}}">
 
-    <label for="descricao">Descrição:</label>
-    <input type="text" name="descricao" value="{{equipamento.descricao}}">
+      <label for="descricao">Descrição:</label>
+      <input type="text" name="descricao" value="{{equipamento.descricao}}">
 
-    <label for="setor">Setor:</label>
-    <input type="text" name="setor" value="{{equipamento.setor}}">
+      <label for="setor">Setor:</label>
+      <input type="text" name="setor" value="{{equipamento.setor}}">
 
-    <label for="usuario">Usuário:</label>
-    <input type="text" name="usuario" value="{{equipamento.usuario}}">
+      <label for="usuario">Usuário:</label>
+      <input type="text" name="usuario" value="{{equipamento.usuario}}">
 
-    <label for="id_remoto">Id_remoto:</label>
-    <input type="number" name="id_remoto" value="{{equipamento.id_remoto}}">
+      <label for="id_remoto">Id_remoto:</label>
+      <input type="number" name="id_remoto" value="{{equipamento.id_remoto}}">
 
-    <button type="submit">Atualizar</button>
+      <button type="submit">Atualizar</button>
+  </main>
 </body>
 
 </html>

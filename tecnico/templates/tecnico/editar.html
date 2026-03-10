@@ -8,15 +8,20 @@
 </head>
 
 <body>
-  <form action="{% url 'update' tecnico.id%}" method="POST">
-    {% csrf_token %}
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" value="{{tecnico.nome}}">
+  <main>
+    <h1>Modificar dados de {{tecnico.nome}}</h1>
+    <div>
+      <form action="{% url 'update' tecnico.id%}" method="POST">
+        {% csrf_token %}
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="{{tecnico.nome}}">
 
-    <label for="matricula">Matrícula: </label>
-    <input type="text" name="matricula" value="{{tecnico.matricula}}">
+        <label for="matricula">Matrícula:</label>
+        <input type="text" name="matricula" value="{{tecnico.matricula}}">
 
-    <button type="submit">Atualizar</button>
+        <button type="submit">Atualizar</button>
+    </div>
+  </main>
 </body>
 
 </html>

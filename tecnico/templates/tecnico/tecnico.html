@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "home.html" %}
+{% block title %}Técnico{% endblock %}
+{% block content %}
+<h1>Técnicos</h1>
+<header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de técnico</title>
-</head>
-
-<body>
-
+</header>
+<section>
+  <h2>Cadastro de técnicos</h2>
   <form action="{% url 'salvar' %}" method="POST">
     {% csrf_token %}
     <label for="nome">Nome:</label>
     <input type="text" name="nome">
 
-    <label for="matricula">Matrícula: </label>
+    <label for="matricula">Matrícula:</label>
     <input type="text" name="matricula">
 
     <button type="submit">Enviar</button>
   </form>
-
+</section>
+<section>
+  <h2>Técnicos registrados</h2>
   <ul>
     {% for tecnico in tecnicos %}
     <li>
@@ -29,7 +29,5 @@
     </li>
     {% endfor %}
   </ul>
-
-</body>
-
-</html>
+</section>
+{% endblock %}
