@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipamentos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamentos</title>
 </head>
+
 <body>
-    <form action="{% url 'salvar_equip' %}" method="POST">
+  <main>
+    <header>
+      <h1>Equipamentos</h1>
+    </header>
+    <section>
+      <header>
+        <h2>Cadastro de equipamentos</h2>
+      </header>
+      <form action="{% url 'salvar_equip' %}" method="POST">
         {% csrf_token %}
-        <label for="nome">Tombo:</label>
-        <input type="text" name="tombo">
+        <label for="tombo">Tombo:</label>
+        <input type="number" name="tombo">
 
         <label for="tipo">Tipo:</label>
         <input type="text" name="tipo">
@@ -24,19 +34,25 @@
         <input type="text" name="usuario">
 
         <label for="id_remoto">ID do AnyDesk:</label>
-        <input type="text" name="id_remoto">
+        <input type="number" name="id_remoto">
 
         <button type="submit">Enviar</button>
-    </form>
+      </form>
+    </section>
 
-    <ul>
-    {% for equipamento in equipamentos %}
+    <section>
+      <h2>Equipamentos registrados</h2>
+      <ul>
+        {% for equipamento in equipamentos %}
         <li>
-             {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}} 
-             <a href="{% url 'update_equip' equipamento.id %}">editar</a>
-             <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
-            </li>
-    {% endfor %}
-    </ul>
+          {{equipamento.tombo}} - {{equipamento.tipo}} - {{equipamento.descricao}}
+          <a href="{% url 'editar_equip' equipamento.id %}">editar</a>
+          <a href="{% url 'deletar_equip' equipamento.id %}">deletar</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
 </body>
+
 </html>

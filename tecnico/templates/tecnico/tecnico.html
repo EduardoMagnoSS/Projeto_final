@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de técnico</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de técnico</title>
 </head>
+
 <body>
-    
-    <form action="{% url 'salvar' %}" method="POST">
-        {% csrf_token %}
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome">
 
-        <label for="matricula">Matrícula: </label>
-        <input type="text" name="matricula">
+  <form action="{% url 'salvar' %}" method="POST">
+    {% csrf_token %}
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome">
 
-        <button type="submit">Enviar</button>
-    </form>
+    <label for="matricula">Matrícula: </label>
+    <input type="text" name="matricula">
 
-    <ul>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <ul>
     {% for tecnico in tecnicos %}
-        <li>
-             {{tecnico.nome}} - {{tecnico.matricula}} 
-             <a href="{% url 'editar' tecnico.id %}">editar</a>
-             <a href="{% url 'deletar' tecnico.id %}">deletar</a>
-            </li>
+    <li>
+      {{tecnico.nome}} - {{tecnico.matricula}}
+      <a href="{% url 'editar' tecnico.id %}">editar</a>
+      <a href="{% url 'deletar' tecnico.id %}">deletar</a>
+    </li>
     {% endfor %}
-    </ul>
+  </ul>
 
 </body>
+
 </html>
