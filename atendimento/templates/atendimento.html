@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atendimento</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Atendimentos{% endblock %}
+{% block content %}
+<section>
+  <h2>Registrar atendimento</h2>
+  <form action="{% url 'salvar_atend' %}" method="POST">
+    {% csrf_token %}
+    <p>Selecione a máquina</p>
+    <select name="equipamento">
+      {% for equipamento in equipamentos %}
+      <option value="{{equipamento.id}}">{{equipamento.tombo}}</option>
+      {% endfor %}
+    </select>
+
+    <label for="problema">Problema encontrado:</label>
+    <input type="text" name="problema">
+
+    <label for="solucao">Solução encontrada:</label>
+    <input type="text" name="solucao">
+
+    <label for="observacao">Observação:</label>
+    <input type="text" name="observacao">
+
+    <p>Selecione o técnico responsável</p>
+    <select name="responsavel">
+      {% for tecnico in tecnicos %}
+      <option value="{{ tecnico.id }}">{{tecnico.nome}}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+<section>
+  <h2>Atendimentos passados</h2>
+  {% for atendimento in atendimentos %}
+  <p>Tombo: {{atendimento.equipamento.tombo}} - Problema: {{atendimento.problema}} - Responsável:
+    {{atendimento.responsavel.nome}} - Data: {{atendimento.data|date:"d/m/Y"}}</p>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('equipamentos/', include('equipamentos.urls')),
     path('tecnico/', include('tecnico.urls')),
+    path('atendimento/', include('atendimento.urls')),
     path('home/', include('home.urls')),
-    path('', RedirectView.as_view(url='home/'))
+    path('', RedirectView.as_view(url='home/')),
 ]
