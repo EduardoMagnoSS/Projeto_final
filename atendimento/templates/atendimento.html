@@ -36,6 +36,9 @@
   {% for atendimento in atendimentos %}
   <p>Tombo: {{atendimento.equipamento.tombo}} - Problema: {{atendimento.problema}} - Responsável:
     {{atendimento.responsavel.nome}} - Data: {{atendimento.data|date:"d/m/Y"}}</p>
+  <a href="{% url 'edit_atend' atendimento.id %}">Editar</a>
+  <a href="{% url 'delete_atend' atendimento.id%}">Deletar</a>
+
   {% endfor %}
 </section>
 {% endblock %}

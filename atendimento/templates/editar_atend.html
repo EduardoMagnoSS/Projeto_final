@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar atendimento {{atendimento.id}}</title>
+</head>
+
+<body>
+  <main>
+    <form action="{% url 'update_atend' atendimento.id%}" method="POST">
+      {% csrf_token %}
+      <p>Máquina:</p>
+      <select name="equipamento">
+        {% for equipamento in equipamentos %}
+        <option value="{{equipamento.id}}">{{equipamento.tombo}}</option>
+        {% endfor %}
+      </select>
+
+      <label for="problema">Problema encontrado:</label>
+      <input type="text" name="problema" value="{{atendimento.problema}}">
+
+      <label for="solucao">Solução encontrada:</label>
+      <input type="text" name="solucao" value="{{atendimento.solucao}}">
+
+      <label for="observacao">Observação:</label>
+      <input type="text" name="observacao" value="{{atendimento.observacao}}">
+
+      <p>Técnico responsável:</p>
+      <select name="responsavel">
+        {% for tecnico in tecnicos %}
+        <option value="{{ tecnico.id }}">{{tecnico.nome}}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Atualizar</button>
+    </form>
+  </main>
+</body>
+
+</html>
